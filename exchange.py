@@ -31,9 +31,12 @@ headers = {
 #comprobar estao
 seguir = 's'
 while seguir == 's':
+    #vista
     origen = input('¿Que moneda quieres cambiar?')
     destino = input('Que moneda desear obtener')
+    #/vista
 
+    #modelo
     url = servidor + endpoint + '/' + origen + '/' + destino
     #url = f'{servidor}{endpoint}/{origen}/{destino}'
 
@@ -45,12 +48,17 @@ while seguir == 's':
         #recoger datos de verda
         exchange = response.json()
         rate = exchange['rate']
+        # /modelo
+
+        #vista
         print(f'Un {origen} vale lo mismo que {rate} {destino}')
     else:
+        #vista
         print('Error', response.status_code, ':', response.reason)
-
     
+
+    #controlador es uin esta controlando si seguimos o no
     seguir = ''
     while seguir.lower() not in ('s', 'n'):
-        seguir = input('Quieres consultr de nuevo? (s/n)')
+        seguir = input('Quieres consultar de nuevo? (s/n)')
     
