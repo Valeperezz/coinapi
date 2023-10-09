@@ -1,6 +1,6 @@
 import requests
 #configuracion
-apikey= ''
+apikey= '54CC9DB5-A9E5-4DEF-AFCA-BFAEE77C7995'
 servidor = 'https//rest.coinapi.io'
 endpoint = '/v1/exchangerate'
 
@@ -8,27 +8,31 @@ headers = {
     'X-CoinAPI-Key': apikey
 } 
 """
-pedir moneda de orgen: BTC
-Pedir moneda estino: EUR
-IR a la API Y preguntar el valor de cambio
-{'asset_base_i: 'BTC, 'asset_id_quote'}
-Si hay error, mostrar mensaje
-recoger el dato
-Mostrar un mensaje: un btc vale lo mismo que 30000 eur
-pregunta: quieres consultar de nuevo? (s/n)
+1. Pedir moneda de origen: BTC
+2. Pedir moneda destino: EUR
+3. IR a la API y preguntar el valor de cambio
+
+    {
+    "time": "2017-08-09T14:31:18.3150000Z",
+    "asset_id_base": "BTC",
+    "asset_id_quote": "USD",
+    "rate": 3260.3514321215056208129867667
+    }
+3.1 si hay error, mostrar mensaje
+
+4. Recoger el dato
+5. Mostrar un mensaje: 'Un BTC vale lo mismo que 30000 EUR'
+6. Pregunta: ¿Quieres consultar de nuevo? (s/n)
 """
 
 
 
 
-
-
-
 #comprobar estao
-
+seguir = 's'
 while seguir == 's':
     origen = input('¿Que moneda quieres cambiar?')
-    destino = input('Que monea desear obtener')
+    destino = input('Que moneda desear obtener')
 
     url = servidor + endpoint + '/' + origen + '/' + destino
     #url = f'{servidor}{endpoint}/{origen}/{destino}'
@@ -48,5 +52,5 @@ while seguir == 's':
     
     seguir = ''
     while seguir.lower() not in ('s', 'n'):
-    seguir = input('Quieres consultr de nuevo? (s/n)')
+        seguir = input('Quieres consultr de nuevo? (s/n)')
     
